@@ -1,6 +1,7 @@
 package tacos;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Data
 public class Taco {
+        @Id
         private Long id;
 
         @NotNull
@@ -20,7 +22,7 @@ public class Taco {
         @Size(min=1, message="You must choose at least 1 ingredient")
         private List<IngredientRef> ingredients = new ArrayList<>();
 
-        private Date createdAt;
+        private Date createdAt = new Date();
 
         public void addIngredient(Ingredient ingredient) {
                 this.ingredients.add(new IngredientRef(ingredient.getId()));

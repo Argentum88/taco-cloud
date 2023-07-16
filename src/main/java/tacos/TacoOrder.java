@@ -2,6 +2,7 @@ package tacos;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
@@ -14,6 +15,7 @@ import java.util.List;
 public class TacoOrder {
         private static final long serialVersionUID = 1L;
 
+        @Id
         private Long id;
 
         @NotBlank(message="Name is required")
@@ -42,7 +44,7 @@ public class TacoOrder {
 
         private List<Taco> tacos = new ArrayList<>();
 
-        private Date placedAt;
+        private Date placedAt = new Date();
 
         public void addTaco(Taco taco) {
                 this.tacos.add(taco);
